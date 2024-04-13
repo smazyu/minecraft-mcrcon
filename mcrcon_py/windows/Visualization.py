@@ -114,8 +114,10 @@ def switch_gamerule():
     rcon.command(f'gamerule {rule} {value}')
     rcon.disconnect()
     messagebox.showinfo("成功", "游戏规则设置成功。")
-
+root = tk.Tk()
+root.title("Minecraft 服务器管理")
 # 管理白名单
+whitelist_player_var = tk.StringVar()
 def switch_whitelist():
     action = whitelist_action_var.get()
     player = whitelist_player_var.get()
@@ -129,6 +131,7 @@ def switch_whitelist():
     rcon.disconnect()
 
 # 管理操作员
+op_player_var = tk.StringVar()
 def switch_op():
     action = op_action_var.get()
     player = op_player_var.get()
@@ -142,6 +145,7 @@ def switch_op():
     rcon.disconnect()
 
 # 管理封禁名单
+banlist_player_var = tk.StringVar()
 def switch_banlist():
     action = banlist_action_var.get()
     player = banlist_player_var.get()
@@ -154,14 +158,11 @@ def switch_banlist():
         messagebox.showinfo("成功", f"玩家已被{action}封禁名单。")
     rcon.disconnect()
 
-# 创建主窗口
-root = tk.Tk()
-root.title("Minecraft 服务器管理")
 
 # 加载设置并连接服务器
-settings = load_settings(r"new_smzy_study\\minecraft\\config.toml")
+settings = load_settings(r"\minecraft-mcrcon\config\config.toml")
 rcon = connect_to_server(settings)
-joined_players = load_joined_players(r"new_smzy_study\\minecraft\\joined_players.txt")
+joined_players = load_joined_players(r"\minecraft-mcrcon\joined_players.txt")
 
 # 创建滚动条
 scrollbar = tk.Scrollbar(root)

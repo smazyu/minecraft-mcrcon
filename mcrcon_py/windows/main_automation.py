@@ -4,23 +4,24 @@ import re
 import time
 from mcrcon import MCRcon
 import toml
-
+import subprocess
 # 配置日志记录
-logging.basicConfig(filename=r'E:\GitHub\new_smzy_study\minecraft\server.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename=r'\minecraft-mcrcon\log\server.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # 从配置文件加载设置
 def load_settings(filename):
     with open(filename, 'r') as file:
         settings = toml.load(file)
     return settings
-
 # 连接到Minecraft服务器
 def connect_to_server(settings):
     host = settings['server']['host']
     port = settings['server']['port']
     password = settings['server']['password']
     return MCRcon(host, password, port)
-
+# 打开数据可视化程序
+def open_visualization():
+    subprocess.run(["python", "Visualization.py"])  # 假设你的数据可视化程序是 Visualization.py
 # 发送欢迎消息给新玩家
 def send_message(rcon, name, messages):
     for message in messages:
@@ -38,7 +39,7 @@ def load_joined_players(filename):
     try:
         with open(filename, 'r') as file:
             joined_players = file.read().splitlines()
-        return joined_players-
+        return joined_players
     except FileNotFoundError:
         return []
 
@@ -74,7 +75,7 @@ def monitor_players(rcon, messages, joined_players_filename):
                 for player in name_list:
                     if player not in joined_players:
                         joined_players.append(player)
-                        logging.info(f'Player {player} joined the server')
+                        print(f'Player {player} joined the server')
                         send_message(rcon, player, messages)  # 发送欢迎消息
             else:
                 joined_players.clear()
@@ -84,12 +85,12 @@ def monitor_players(rcon, messages, joined_players_filename):
             for player in joined_players:
                 if player not in name_list:
                     joined_players.remove(player)
-                    logging.info(f'Player {player} left the server')
+                    print(f'Player {player} left the server')
 
             if current_player_count != prev_player_count:
-                logging.info(f'Current players online: {current_player_count}')
+                print(f'Current players online: {current_player_count}')
                 if current_player_count != 0:
-                    logging.info(f'Joined players: {joined_players}')
+                    print(f'Joined players: {joined_players}')
                 prev_player_count = current_player_count
             save_joined_players(joined_players_filename, joined_players)
 
@@ -97,10 +98,10 @@ def monitor_players(rcon, messages, joined_players_filename):
             logging.error(f"An error occurred while monitoring players: {e}")
         finally:
             rcon.disconnect()
-            time.sleep(3)  # 每3秒检查一次
+            time.sleep(5)  # 每3秒检查一次
 
 def main():
-    settings = load_settings(r'E:\GitHub\new_smzy_study\minecraft\config.toml')
+    settings = load_settings(r'\minecraft-mcrcon\config\config.toml')
     rcon = connect_to_server(settings)
     messages = [
         '欢迎来到服务器！',
@@ -108,15 +109,18 @@ def main():
         '如果您有任何问题，请联系管理员。'
     ]
     clear_interval = 1800  # 30分钟清理一次
-    joined_players_filename = r'E:\GitHub\new_smzy_study\minecraft\joined_players.txt'  # 存储已加入玩家列表的文件路径
+    joined_players_filename = r'\minecraft-mcrcon\joined_players.txt'  # 存储已加入玩家列表的文件路径
     clear_process = multiprocessing.Process(target=clear_items, args=(rcon, clear_interval))
     monitor_process = multiprocessing.Process(target=monitor_players, args=(rcon, messages, joined_players_filename))
-    
+    # 启动一个进程来打开数据可视化程序
+    visualization_process = multiprocessing.Process(target=open_visualization)
+
     clear_process.start()
     monitor_process.start()
-    
+    visualization_process.start()
     clear_process.join()  # 等待清理任务完成
     monitor_process.join()  # 等待监控任务完成
-
+    visualization_process.join()  # 等待数据可视化程序完成
 if __name__ == '__main__':
     main()
+
