@@ -40,7 +40,7 @@ def teleport_player(rcon,joined_players):
 def give_item(rcon,joined_players):
     print(f"目前的玩家列表：{', '.join(joined_players)}")
     target_player = input("请输入要给予物品的玩家名字：")
-    with open(r"\minecraft-mcrcon\mcrcon_py\linux\id.txt", 'r') as file:
+    with open(r"\minecraft-mcrcon\mcrcon_py\linux\id.txt", 'r',encoding='utf-8') as file:
         id_list = file.read().splitlines()
     print(f"物品ID列表：{id_list}")
     item_id = input("请输入物品ID：")
