@@ -1,4 +1,4 @@
 [server]
-host = "118.25.179.84"
+host = "your host"
 port = 25575
-password = "mazyu602"
+password = "your password"
