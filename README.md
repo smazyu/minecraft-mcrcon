@@ -10,6 +10,8 @@
   
 - **main_automation.py：** 实现与 automation_linux.py 相同功能，但启用时会自动打开可视化界面，提供更便捷的管理方式。
 
+- **quickly_command.py：** 提供自动化由服务器自动化管理工具生成的玩家列表，在对话框内输入指令(如你在游戏内输入op指令一样)
+
 ### 附加文件
 
 - **id.txt：** 包含常见物品的 ID，当执行给予物品的命令时，command.py 会自动打开此文件提供物品列表。
@@ -21,6 +23,10 @@
 - 使用 command.py 执行游戏服务器的常见命令。
   
 - 使用 Visualization.py 进行可视化管理，操作更直观、便捷。
+
+- 使用一键开服.bat 快速启动游戏服务器。
+
+- 使用 quickly_command.py 远程输入指令，无须登入游戏和终端
 
 - log文件夹下会存储错误详细
 
@@ -73,7 +79,10 @@
   - 可选择 Java 版本
   - 可选择核心文件，只需修改核心文件的名称即可开始使用
 
-
+## Minecraft MCRCON 快速指令 (Python 程序)
+- **quickly_command.py：**
+  - 提供自动化由服务器自动化管理工具生成的玩家列表
+  - 在对话框内输入指令(如你在游戏内输入op指令一样)
 ### 安装依赖
 
 在运行任何工具之前，请确保已安装以下依赖：
@@ -101,6 +110,8 @@ pip install mcrcon toml
 - **Minecraft 服务器一键启动脚本：**
   - 双击运行 一键开服.bat 文件即可启动 Minecraft 服务器。
 
+- **Minecraft MCRCON 快速指令 (Python 程序)：**
+  - 运行 quickly_command.py 文件启动命令行程序
 ## 执行操作
 
 根据对应工具的界面或命令行提示，输入相应的信息来执行操作。
