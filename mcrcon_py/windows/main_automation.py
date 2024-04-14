@@ -64,7 +64,7 @@ def clear_items(rcon, clear_interval):
 # 监控玩家加入和退出服务器
 def monitor_players(rcon, messages, joined_players_filename):
     prev_player_count = 0
-    joined_players = load_joined_players(joined_players_filename)
+    joined_players = list(set(load_joined_players(joined_players_filename)))  # 去除重复的玩家名字
     while True:
         try:
             rcon.connect()
@@ -75,30 +75,32 @@ def monitor_players(rcon, messages, joined_players_filename):
                 for player in name_list:
                     if player not in joined_players:
                         joined_players.append(player)
-                        print(f'Player {player} joined the server')
+                        print(f'玩家 {player} 加入了服务器')
                         send_message(rcon, player, messages)  # 发送欢迎消息
             else:
                 joined_players.clear()
-
             match_numbers = re.findall(r'\d+', status)
             current_player_count = int(match_numbers[1]) if match_numbers else 0
-            for player in joined_players:
+
+            # 创建副本进行遍历
+            for player in joined_players[:]:
                 if player not in name_list:
                     joined_players.remove(player)
-                    print(f'Player {player} left the server')
+                    print(f'玩家 {player} 离开了服务器')
 
             if current_player_count != prev_player_count:
-                print(f'Current players online: {current_player_count}')
+                print(f'当前在线玩家数: {current_player_count}')
                 if current_player_count != 0:
-                    print(f'Joined players: {joined_players}')
+                    print(f'加入的玩家列表: {joined_players}')
                 prev_player_count = current_player_count
             save_joined_players(joined_players_filename, joined_players)
 
         except Exception as e:
-            logging.error(f"An error occurred while monitoring players: {e}")
+            logging.error(f"监控玩家时发生错误: {e}")
         finally:
             rcon.disconnect()
-            time.sleep(5)  # 每3秒检查一次
+            time.sleep(5)  # 每5秒检查一次
+
 
 def main():
     settings = load_settings(r'\minecraft-mcrcon\config\config.toml')

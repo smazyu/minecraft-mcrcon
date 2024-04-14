@@ -85,10 +85,11 @@ def kick_player():
 # 设置天气
 def switch_weather():
     weather = weather_var.get()
+    time = time_weather_var.get()
     rcon.connect()
-    rcon.command(f'weather {weather}')
+    rcon.command(f'weather world {weather} {time}')
     rcon.disconnect()
-    messagebox.showinfo("成功", "天气设置成功。")
+    messagebox.showinfo("成功", f"天气设置为{weather},时间为{time}。")
 
 # 设置时间
 def switch_time():
@@ -114,13 +115,11 @@ def switch_gamerule():
     rcon.command(f'gamerule {rule} {value}')
     rcon.disconnect()
     messagebox.showinfo("成功", "游戏规则设置成功。")
-root = tk.Tk()
-root.title("Minecraft 服务器管理")
+
 # 管理白名单
-whitelist_player_var = tk.StringVar()
 def switch_whitelist():
     action = whitelist_action_var.get()
-    player = whitelist_player_var.get()
+    player = player_var_whitelist .get()
     rcon.connect()
     if action == 'list':
         whitelist = rcon.command('whitelist list')
@@ -131,24 +130,25 @@ def switch_whitelist():
     rcon.disconnect()
 
 # 管理操作员
-op_player_var = tk.StringVar()
 def switch_op():
     action = op_action_var.get()
-    player = op_player_var.get()
+    player = player_var_op.get()
     rcon.connect()
     if action == 'list':
         ops = rcon.command('op list')
-        messagebox.showinfo("操作员列表", ops)
-    else:
-        rcon.command(f'op {action} {player}')
-        messagebox.showinfo("成功", f"玩家已被{action}操作员权限。")
+        messagebox.showinfo(" 响应", ops)
+    elif action == 'add':
+        ops = rcon.command(f'op {player}')
+        messagebox.showinfo("成功", ops)
+    elif action == 'remove':
+        ops = rcon.command(f'deop {player}')
+        messagebox.showinfo("成功", ops)
     rcon.disconnect()
 
 # 管理封禁名单
-banlist_player_var = tk.StringVar()
 def switch_banlist():
     action = banlist_action_var.get()
-    player = banlist_player_var.get()
+    player = target_player_ban_var.get()
     rcon.connect()
     if action == 'list':
         banlist = rcon.command('banlist list')
@@ -158,6 +158,8 @@ def switch_banlist():
         messagebox.showinfo("成功", f"玩家已被{action}封禁名单。")
     rcon.disconnect()
 
+root = tk.Tk()
+root.title("Minecraft 服务器管理")
 
 # 加载设置并连接服务器
 settings = load_settings(r"\minecraft-mcrcon\config\config.toml")
@@ -269,10 +271,18 @@ tk.Button(kick_player_frame, text="踢出玩家", command=kick_player).grid(row=
 # 设置天气
 switch_weather_frame = tk.LabelFrame(second_frame, text="设置天气")
 switch_weather_frame.pack(padx=10, pady=5)
+
 weather_var = tk.StringVar()
 tk.Label(switch_weather_frame, text="天气：").grid(row=0, column=0, padx=5, pady=5)
-tk.OptionMenu(switch_weather_frame, weather_var, 'clear', 'rain', 'thunder').grid(row=0, column=1, padx=5, pady=5)
-tk.Button(switch_weather_frame, text="设置天气", command=switch_weather).grid(row=1, columnspan=2, padx=5, pady=5)
+tk.OptionMenu(switch_weather_frame, weather_var, 'storm', 'sun').grid(row=0, column=1, padx=5, pady=5)
+
+time_weather_var = tk.StringVar()
+tk.Label(switch_weather_frame, text="时间：").grid(row=1, column=0, padx=5, pady=5)
+tk.Entry(switch_weather_frame, textvariable=time_weather_var).grid(row=1, column=1, padx=5, pady=5)
+
+tk.Button(switch_weather_frame, text="设置天气", command=switch_weather).grid(row=2, columnspan=2, padx=5, pady=5)
+
+
 
 # 设置时间
 switch_time_frame = tk.LabelFrame(second_frame, text="设置时间")

@@ -96,13 +96,29 @@ def switch_whitelist(rcon,joined_players):
 def switch_op(rcon,joined_players):
     print(f"目前的玩家列表：{', '.join(joined_players)}")
     rcon.connect()
+    player = input("请输入要操作的玩家名字：")
     action = input("请输入要执行的操作：'list', 'add', 'remove'")
     if action == 'list':
         rcon.command('op list')
         print(rcon.command('op list'))
-    else:
-        player = input("请输入要操作的玩家名字：")
-        rcon.command(f'op {action} {player}')
+    elif action == 'add':
+        ops = rcon.command(f'op {player}')
+        print("成功", ops)
+    elif action == 'remove':
+        ops = rcon.command(f'deop {player}')
+        print("成功", ops)
+    rcon.disconnect()
+def switch_weather(rcon,joined_players):
+    rcon.connect()
+    weather = input("请输入要设置的天气：'storm', 'sun'")
+    time = input("请输入要设置的时间：")
+    rcon.command(f'weather world {weather} {time}')
+    rcon.disconnect()
+
+def switch_time(rcon,joined_players):
+    rcon.connect()
+    time = input("请输入要设置的时间：")
+    rcon.command(f'time set {time}')
     rcon.disconnect()
 def switch_banlist(rcon,joined_players):
     print(f"目前的玩家列表：{', '.join(joined_players)}")
@@ -125,11 +141,13 @@ commands = {
     '5': ban_player,
     '6': unban_player,
     '7': kick_player,
-    '8': switch_difficulty,
-    '9': switch_gamerule,
-    '10': switch_whitelist,
-    '11': switch_op,
-    '12': switch_banlist,
+    '8': switch_weather,
+    '9': switch_time,
+    '10': switch_difficulty,
+    '11': switch_gamerule,
+    '12': switch_whitelist,
+    '13': switch_op,
+    '14': switch_banlist,
     'exit': None  # 退出命令
 }
 
