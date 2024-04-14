@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from mcrcon import MCRcon
 import toml
 
