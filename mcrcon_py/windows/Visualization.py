@@ -162,9 +162,9 @@ root = tk.Tk()
 root.title("Minecraft 服务器管理")
 
 # 加载设置并连接服务器
-settings = load_settings(r"\minecraft-mcrcon\config\config.toml")
+settings = load_settings(r"config\config.toml")
 rcon = connect_to_server(settings)
-joined_players = load_joined_players(r"\minecraft-mcrcon\joined_players.txt")
+joined_players = load_joined_players(r"joined_players.txt")
 
 # 创建滚动条
 scrollbar = tk.Scrollbar(root)

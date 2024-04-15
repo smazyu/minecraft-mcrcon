@@ -6,7 +6,7 @@ import time
 from mcrcon import MCRcon
 import toml
 # 配置日志记录
-logging.basicConfig(filename=r'\minecraft-mcrcon\log\server.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename=r'log\server.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # 从配置文件加载设置
 def load_settings(filename):
@@ -99,7 +99,7 @@ def monitor_players(rcon, messages, joined_players_filename):
             time.sleep(5)  # 每3秒检查一次
 
 def main():
-    settings = load_settings(r'\minecraft-mcrcon\config\config.toml')
+    settings = load_settings(r'config\config.toml')
     rcon = connect_to_server(settings)
     messages = [
         '欢迎来到服务器！',
@@ -107,7 +107,7 @@ def main():
         '如果您有任何问题，请联系管理员。'
     ]
     clear_interval = 1800  # 30分钟清理一次
-    joined_players_filename = r'\minecraft-mcrcon\joined_players.txt'  # 存储已加入玩家列表的文件路径
+    joined_players_filename = r'joined_players.txt'  # 存储已加入玩家列表的文件路径
     clear_process = multiprocessing.Process(target=clear_items, args=(rcon, clear_interval))
     monitor_process = multiprocessing.Process(target=monitor_players, args=(rcon, messages, joined_players_filename))
 

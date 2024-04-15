@@ -46,7 +46,7 @@ if not %errorlevel% == 0 (
 	goto selectjava
 )
 ::此脚本为自动分配win服务器最大可用内存-%sysram%MB的启动脚本
-::需要指定内存的，请使用其它脚本
+::需要指定内存的,请自行在第91行修改
 ::获取系统内存
 for /f "delims=" %%a in ('wmic os get TotalVisibleMemorySize /value^|find "="') do set %%a
 set /a t1=%TotalVisibleMemorySize%,t2=1024
@@ -59,10 +59,10 @@ call :ColorText 07 "系统最大内存为：%ram% MB，剩余可用内存为：%freeram% MB" && e
 ::useram为-Xmx的值（单位MB），即启动参数的最大分配内存
 set /a useram=%freeram%-%sysram%
 ::%useram%
-call :ColorText 07 "本次开服将分配最大 5000MB" && echo.
+call :ColorText 07 "本次开服将分配最大 %useram%MB" && echo.
 call :ColorText 07 "-----------------------------------------------------------" && echo.
-echo 开服核心文件为 %serverjar% ，如果需要自定义，请编辑本脚本的第26行变量
-echo 开服的额外参数 %extra% ，如果需要自定义，请编辑本脚本的第30行变量
+echo 开服核心文件为 %serverjar% ，如果需要自定义，请编辑本脚本的第22行变量
+echo 开服的额外参数 %extra% ，如果需要自定义，请编辑本脚本的第26行变量
 call :ColorText 07 "===========================================================" && echo.
 call :ColorText 07 "开服参数：" && echo %useJava% -Xms%minram%M -Xmx%useram%M %extra% -jar %serverjar% && echo.
 call :ColorText 07 "===========================================================" && echo.
@@ -87,10 +87,10 @@ echo.
 echo.                   服务器正在启动中,请稍等……
 echo. 
 echo.
-echo. -----------------------------------------------------------------
+echo. ------------------------------------------------------------------
 %useJava% -Xms%minram%M -Xmx%useram%M %extra% -jar %serverjar%
 ::使用authlib挟持正版验证
-::
+::使用这个时请将authlib-injector-1.2.5.jar放在服务器根目录
 ::%useJava% -Xms%minram%M -Xmx%useram%M -javaagent:authlib-injector-1.2.5.jar=https://littleskin.cn/api/yggdrasil %extra% -jar %serverjar%
 echo. ----------------------------------------------------------------- 
 echo.                   服务器已关闭,按任意键退出                                

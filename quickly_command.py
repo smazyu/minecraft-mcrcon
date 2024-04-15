@@ -21,9 +21,9 @@ def load_players(file_path):
         return []
 
 def main():
-    settings = load_settings(r"\minecraft-mcrcon\config\config.toml")
+    settings = load_settings(r"config\config.toml")
     rcon = connect_to_server(settings)
-    file_path = r'/minecraft-mcrcon/joined_players.txt'
+    file_path = r'joined_players.txt'
     player_list = load_players(file_path)
     if player_list:
         print(f"玩家列表：{', '.join(player_list)}")
