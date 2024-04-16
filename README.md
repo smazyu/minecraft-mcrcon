@@ -1,4 +1,4 @@
-<details>
+<button onclick="toggleLanguage()">切换到中文 | Switch to Chinese</button>
 - **automation_linux.py:** Automatically monitors the current number of players and sends a welcome message when new players join. Also responsible for cleaning up dropped items in the world every 30 minutes.
 
 - **command.py:** Provides common commands executed via mcrcon for interaction with the game server.
@@ -137,11 +137,8 @@ Follow the prompts on the corresponding tool's interface or command line to inpu
 ---
 
 As a first-year student, I have limited energy. If you are willing to help, your participation is very welcome.
-
-</details>
-
-<details>
-<summary>切换到中文 | Switch to Chinese</summary>
+<details id="chineseContent" style="display:none">
+<summary>中文内容 | Chinese Content</summary>
 # 模块介绍
 
 - **automation_linux.py：** 用于自动监控当前玩家数量，并在新玩家进入时发送欢迎信息。同时，负责每隔 30 分钟清理一次世界掉落物。
@@ -280,5 +277,11 @@ pip install mcrcon toml
 
 因为本人作为大一学生，精力有限，如果您愿意提供帮助，非常欢迎您的加入。
 </details>
-</details>
+
+<script>
+function toggleLanguage() {
+  var chineseContent = document.getElementById("chineseContent");
+  chineseContent.style.display = (chineseContent.style.display === "none") ? "block" : "none";
+}
+</script>
 
