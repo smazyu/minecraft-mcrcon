@@ -1,6 +1,6 @@
 import toml
 from mcrcon import MCRcon
-
+import re
 def load_settings(filename):
     with open(filename, 'r') as file:
         settings = toml.load(file)
@@ -19,13 +19,16 @@ def load_players(file_path):
         return joined_players
     except FileNotFoundError:
         return []
+def explain_op(op):
+    ops = re.sub('§.?','',op)
+    return ops
 
 def main():
-    settings = load_settings(r"config\config.toml")
+    settings = load_settings(r"C:\Users\Administrator\Documents\GitHub\minecraft-mcrcon\config\config.toml")
     rcon = connect_to_server(settings)
-    file_path = r'joined_players.txt'
+    file_path = r'C:\Users\Administrator\Documents\GitHub\minecraft-mcrcon\joined_players.txt'
     player_list = load_players(file_path)
-    if player_list:
+    if player_list: 
         print(f"玩家列表：{', '.join(player_list)}")
     A = input("是否输入指令？(Y/N)")
     if A.lower() == 'y':
@@ -36,6 +39,8 @@ def main():
         rcon.connect()
         command = input("请输入要执行的命令：")
         ops = rcon.command(command)
+        op = ops
+        ops = explain_op(op)
         print(ops)
         rcon.disconnect()
         print("输入exit退出")

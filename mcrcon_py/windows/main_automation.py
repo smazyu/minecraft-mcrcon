@@ -21,7 +21,7 @@ def connect_to_server(settings):
     return MCRcon(host, password, port)
 # 打开数据可视化程序
 def open_visualization():
-    subprocess.run(["python", "Visualization.py"])  # 假设你的数据可视化程序是 Visualization.py
+    subprocess.run(["python", r"mcrcon_py\windows\Visualization.py"])  # 假设你的数据可视化程序是 Visualization.py
 # 发送欢迎消息给新玩家
 def send_message(rcon, name, messages):
     for message in messages:
