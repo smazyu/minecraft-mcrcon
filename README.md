@@ -1,5 +1,4 @@
-# Module Introduction
-
+<details>
 - **automation_linux.py:** Automatically monitors the current number of players and sends a welcome message when new players join. Also responsible for cleaning up dropped items in the world every 30 minutes.
 
 - **command.py:** Provides common commands executed via mcrcon for interaction with the game server.
@@ -280,6 +279,6 @@ pip install mcrcon toml
 ---
 
 因为本人作为大一学生，精力有限，如果您愿意提供帮助，非常欢迎您的加入。
-
+</details>
 </details>
 
