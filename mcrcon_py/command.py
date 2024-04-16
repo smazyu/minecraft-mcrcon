@@ -151,11 +151,11 @@ commands = {
     'exit': None  # 退出命令
 }
 #config\config.toml
-settings = load_settings(r"C:\Users\Administrator\Documents\GitHub\minecraft-mcrcon\config\config.toml")
+settings = load_settings(r"config\config.toml")
 rcon = connect_to_server(settings)
 
 # 从文件加载玩家列表
-joined_players = load_joined_players(r"C:\Users\Administrator\Documents\GitHub\minecraft-mcrcon\joined_players.txt")
+joined_players = load_joined_players(r"joined_players.txt")
 
 print("下面是一些可用的命令：")
 print("1. 切换游戏模式")
