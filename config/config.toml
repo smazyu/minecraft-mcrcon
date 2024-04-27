@@ -1,4 +1,4 @@
 [server]
 host = "yourhost"
-port = 25575
+port = "25575"
 password = "yourpassword"
