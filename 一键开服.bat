@@ -11,42 +11,43 @@ for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1)
 )
 set version=V1.0
 echo ==============================================
-echo             Ò»¼üÆô¶¯½Å±¾
+echo             ä¸€é”®å¯åŠ¨è„šæœ¬
 echo ==============================================
 echo 
 echo 
 echo.
-title Ò»¼ü¿ª·ş½Å±¾ %version%
-::ÕâÀï´æ·ÅÁË¿ÉÒÔĞŞ¸ÄµÄ±äÁ¿
-::¿ª·şºËĞÄ£¬µÈºÅºóÃæµÄ¶¼Ëã£¬ËùÒÔ×¢Òâ²»ÒªÌí¼Ó¶àÓàµÄ·ûºÅ¡¢¿Õ¸ñµÈ
+title ä¸€é”®å¼€æœè„šæœ¬ %version%
+::è¿™é‡Œå­˜æ”¾äº†å¯ä»¥ä¿®æ”¹çš„å˜é‡
+::å¼€æœæ ¸å¿ƒï¼Œç­‰å·åé¢çš„éƒ½ç®—ï¼Œæ‰€ä»¥æ³¨æ„ä¸è¦æ·»åŠ å¤šä½™çš„ç¬¦å·ã€ç©ºæ ¼ç­‰
 set serverjar=server.jar
-::-XmsÖµ£¨µ¥Î»MB£©£¬¼´Æô¶¯²ÎÊıµÄ×îĞ¡·ÖÅäÄÚ´æ£¬²»ÍÆ¼ö¸Ä
+::-Xmså€¼ï¼ˆå•ä½MBï¼‰ï¼Œå³å¯åŠ¨å‚æ•°çš„æœ€å°åˆ†é…å†…å­˜ï¼Œä¸æ¨èæ”¹
 set minram=512
-::¶îÍâµÄÆô¶¯²ÎÊı£¬±ÈÈç-XX:UseG1GC¡£Ìí¼ÓµÄ»°£¬×¢Òâ×îÇ°ºÍ×îºó²»Òª¼Ó¿Õ¸ñ
+::é¢å¤–çš„å¯åŠ¨å‚æ•°ï¼Œæ¯”å¦‚-XX:UseG1GCã€‚æ·»åŠ çš„è¯ï¼Œæ³¨æ„æœ€å‰å’Œæœ€åä¸è¦åŠ ç©ºæ ¼
 set extra=
-::ÎªÏµÍ³¶îÍâ±£ÁôÄÚ´æ£¨¾ÍÊÇÏÖÔÚÏµÍ³Õ¼ÓÃ100mb£¬´Ë´¦Ìî100µÄ»°£¬¼ÙÉèmcÈ«²¿³ÔÂú£¬ÏµÍ³»¹ÄÜÔÙÕ¼ÓÃ100£©
+
+::ä¸ºç³»ç»Ÿé¢å¤–ä¿ç•™å†…å­˜ï¼ˆå°±æ˜¯ç°åœ¨ç³»ç»Ÿå ç”¨100mbï¼Œæ­¤å¤„å¡«100çš„è¯ï¼Œå‡è®¾mcå…¨éƒ¨åƒæ»¡ï¼Œç³»ç»Ÿè¿˜èƒ½å†å ç”¨100ï¼‰
 set sysram=768
-::ÉèÖÃjavaÄ¿Â¼£¬Ä¬ÈÏÊ¹ÓÃÏµÍ³»·¾³±äÁ¿µÄjava£¬Ê¹ÓÃ´Ë½Å±¾µÄjava°²×°½Å±¾½«»á×Ô¶¯ÅäÖÃÏµÍ³»·¾³±äÁ¿
-::ÀıÈçÒÔÏÂ£º×¢ÒâÒª¼ÓÓ¢ÎÄµÄ""!!!£¬ÆäÖĞ£¬\bin\java.exeÒ»°ã¶¼ÊÇ¹Ì¶¨µÄ¡£
+::è®¾ç½®javaç›®å½•ï¼Œé»˜è®¤ä½¿ç”¨ç³»ç»Ÿç¯å¢ƒå˜é‡çš„javaï¼Œä½¿ç”¨æ­¤è„šæœ¬çš„javaå®‰è£…è„šæœ¬å°†ä¼šè‡ªåŠ¨é…ç½®ç³»ç»Ÿç¯å¢ƒå˜é‡
+::ä¾‹å¦‚ä»¥ä¸‹ï¼šæ³¨æ„è¦åŠ è‹±æ–‡çš„""!!!ï¼Œå…¶ä¸­ï¼Œ\bin\java.exeä¸€èˆ¬éƒ½æ˜¯å›ºå®šçš„ã€‚
 ::set useJava="C:\Program Files\Java\jdk-11.0.12\bin\java.exe"
 set useJava=java
 
-::ÏÈ»ñÈ¡java°æ±¾²¢´òÓ¡£¬Èç¹ûjava»·¾³´æÔÚÔò¿ª·ş
-call :ColorText 07 "¼ì²âJava»·¾³" && echo.
+::å…ˆè·å–javaç‰ˆæœ¬å¹¶æ‰“å°ï¼Œå¦‚æœjavaç¯å¢ƒå­˜åœ¨åˆ™å¼€æœ
+call :ColorText 07 "æ£€æµ‹Javaç¯å¢ƒ" && echo.
 ping 127.1 -n 4 >nul 2>nul
-echo ======Java»·¾³¼ì²âÊä³ö======
+echo ======Javaç¯å¢ƒæ£€æµ‹è¾“å‡º======
 %useJava% -version
-echo ======Java»·¾³¼ì²âÍê±Ï======
+echo ======Javaç¯å¢ƒæ£€æµ‹å®Œæ¯•======
 echo.
 if not %errorlevel% == 0 (
-	call :ColorText 4e "Java»·¾³²»´æÔÚ£¬Çë°´ÌáÊ¾ÏÂÔØ°²×°¡£" && echo.
-	call :ColorText 07 "PS£ºJava»·¾³Ò²¿ÉÒÔ×Ô¼ºÅäÖÃ£¬ÍÆ¼ö×Ô¼ºÅäÖÃ£¬ÊµÔÚ²»»á¿ÉÒÔÊ¹ÓÃ´Ë½Å±¾°²×°ÅäÖÃ" && echo.
+	call :ColorText 4e "Javaç¯å¢ƒä¸å­˜åœ¨ï¼Œè¯·æŒ‰æç¤ºä¸‹è½½å®‰è£…ã€‚" && echo.
+	call :ColorText 07 "PSï¼šJavaç¯å¢ƒä¹Ÿå¯ä»¥è‡ªå·±é…ç½®ï¼Œæ¨èè‡ªå·±é…ç½®ï¼Œå®åœ¨ä¸ä¼šå¯ä»¥ä½¿ç”¨æ­¤è„šæœ¬å®‰è£…é…ç½®" && echo.
 	echo.
 	goto selectjava
 )
-::´Ë½Å±¾Îª×Ô¶¯·ÖÅäwin·şÎñÆ÷×î´ó¿ÉÓÃÄÚ´æ-%sysram%MBµÄÆô¶¯½Å±¾
-::ĞèÒªÖ¸¶¨ÄÚ´æµÄ,Çë×ÔĞĞÔÚµÚ91ĞĞĞŞ¸Ä
-::»ñÈ¡ÏµÍ³ÄÚ´æ
+::æ­¤è„šæœ¬ä¸ºè‡ªåŠ¨åˆ†é…winæœåŠ¡å™¨æœ€å¤§å¯ç”¨å†…å­˜-%sysram%MBçš„å¯åŠ¨è„šæœ¬
+::éœ€è¦æŒ‡å®šå†…å­˜çš„,è¯·è‡ªè¡Œåœ¨ç¬¬91è¡Œä¿®æ”¹
+::è·å–ç³»ç»Ÿå†…å­˜
 for /f "delims=" %%a in ('wmic os get TotalVisibleMemorySize /value^|find "="') do set %%a
 set /a t1=%TotalVisibleMemorySize%,t2=1024
 set /a ram=%t1%/%t2%
@@ -54,199 +55,199 @@ for /f "delims=" %%b in ('wmic os get FreePhysicalMemory /value^|find "="') do s
 set /a t3=%FreePhysicalMemory%
 set /a freeram=%t3%/%t2%
 call :ColorText 07 "-----------------------------------------------------------" && echo.
-call :ColorText 07 "ÏµÍ³×î´óÄÚ´æÎª£º%ram% MB£¬Ê£Óà¿ÉÓÃÄÚ´æÎª£º%freeram% MB" && echo.
-::useramÎª-XmxµÄÖµ£¨µ¥Î»MB£©£¬¼´Æô¶¯²ÎÊıµÄ×î´ó·ÖÅäÄÚ´æ
+call :ColorText 07 "ç³»ç»Ÿæœ€å¤§å†…å­˜ä¸ºï¼š%ram% MBï¼Œå‰©ä½™å¯ç”¨å†…å­˜ä¸ºï¼š%freeram% MB" && echo.
+::useramä¸º-Xmxçš„å€¼ï¼ˆå•ä½MBï¼‰ï¼Œå³å¯åŠ¨å‚æ•°çš„æœ€å¤§åˆ†é…å†…å­˜
 set /a useram=%freeram%-%sysram%
 ::%useram%
-call :ColorText 07 "±¾´Î¿ª·ş½«·ÖÅä×î´ó %useram%MB" && echo.
+call :ColorText 07 "æœ¬æ¬¡å¼€æœå°†åˆ†é…æœ€å¤§ %useram%MB" && echo.
 call :ColorText 07 "-----------------------------------------------------------" && echo.
-echo ¿ª·şºËĞÄÎÄ¼şÎª %serverjar% £¬Èç¹ûĞèÒª×Ô¶¨Òå£¬Çë±à¼­±¾½Å±¾µÄµÚ22ĞĞ±äÁ¿
-echo ¿ª·şµÄ¶îÍâ²ÎÊı %extra% £¬Èç¹ûĞèÒª×Ô¶¨Òå£¬Çë±à¼­±¾½Å±¾µÄµÚ26ĞĞ±äÁ¿
+echo å¼€æœæ ¸å¿ƒæ–‡ä»¶ä¸º %serverjar% ï¼Œå¦‚æœéœ€è¦è‡ªå®šä¹‰ï¼Œè¯·ç¼–è¾‘æœ¬è„šæœ¬çš„ç¬¬22è¡Œå˜é‡
+echo å¼€æœçš„é¢å¤–å‚æ•° %extra% ï¼Œå¦‚æœéœ€è¦è‡ªå®šä¹‰ï¼Œè¯·ç¼–è¾‘æœ¬è„šæœ¬çš„ç¬¬26è¡Œå˜é‡
 call :ColorText 07 "===========================================================" && echo.
-call :ColorText 07 "¿ª·ş²ÎÊı£º" && echo %useJava% -Xms%minram%M -Xmx%useram%M %extra% -jar %serverjar% && echo.
+call :ColorText 07 "å¼€æœå‚æ•°ï¼š" && echo %useJava% -Xms%minram%M -Xmx%useram%M %extra% -jar %serverjar% && echo.
 call :ColorText 07 "===========================================================" && echo.
-call :ColorText 07 "PS£º¿ÉÒÔĞŞ¸ÄµÚ37ĞĞ±äÁ¿Ö¸¶¨java°æ±¾Â·¾¶" && echo.
+call :ColorText 07 "PSï¼šå¯ä»¥ä¿®æ”¹ç¬¬37è¡Œå˜é‡æŒ‡å®šjavaç‰ˆæœ¬è·¯å¾„" && echo.
 echo. -----------------------------------------------------------------
 echo.
-echo.                    ·şÎñÆ÷¼´½«¿ªÆô,ÇëµÈ´ı¡­¡­  
+echo.                    æœåŠ¡å™¨å³å°†å¼€å¯,è¯·ç­‰å¾…â€¦â€¦  
 echo.
-call :ColorText 0c "           ×¢Òâ£º¹Ø±Õ·şÎñÆ÷Ç°ÇëÔÚºóÌ¨ÊäÈëstop±£´æÍæ¼ÒÊı¾İ" && echo.
-call :ColorText 0c "                      ·ñÔò¿ÉÄÜ»á³öÏÖ»ØµµÇé¿ö" && echo.
+call :ColorText 0c "           æ³¨æ„ï¼šå…³é—­æœåŠ¡å™¨å‰è¯·åœ¨åå°è¾“å…¥stopä¿å­˜ç©å®¶æ•°æ®" && echo.
+call :ColorText 0c "                      å¦åˆ™å¯èƒ½ä¼šå‡ºç°å›æ¡£æƒ…å†µ" && echo.
 echo.                
 echo. -----------------------------------------------------------------
 echo.
-call :ColorText 07 "°´ÏÂÈÎÒâ¼üÀ´Æô¶¯·şÎñÆ÷£¡" && echo.
+call :ColorText 07 "æŒ‰ä¸‹ä»»æ„é”®æ¥å¯åŠ¨æœåŠ¡å™¨ï¼" && echo.
 pause>nul
-::Æô¶¯
+::å¯åŠ¨
 cls
 color 07
 echo. ----------------------------------------------------------------- 
 echo. 
 echo. 
-echo.                   ·şÎñÆ÷ÕıÔÚÆô¶¯ÖĞ,ÇëÉÔµÈ¡­¡­
+echo.                   æœåŠ¡å™¨æ­£åœ¨å¯åŠ¨ä¸­,è¯·ç¨ç­‰â€¦â€¦
 echo. 
 echo.
 echo. ------------------------------------------------------------------
 %useJava% -Xms%minram%M -Xmx%useram%M %extra% -jar %serverjar%
-::Ê¹ÓÃauthlibĞ®³ÖÕı°æÑéÖ¤
-::Ê¹ÓÃÕâ¸öÊ±Çë½«authlib-injector-1.2.5.jar·ÅÔÚ·şÎñÆ÷¸ùÄ¿Â¼
+::ä½¿ç”¨authlibæŒŸæŒæ­£ç‰ˆéªŒè¯
+::ä½¿ç”¨è¿™ä¸ªæ—¶è¯·å°†authlib-injector-1.2.5.jaræ”¾åœ¨æœåŠ¡å™¨æ ¹ç›®å½•
 ::%useJava% -Xms%minram%M -Xmx%useram%M -javaagent:authlib-injector-1.2.5.jar=https://littleskin.cn/api/yggdrasil %extra% -jar %serverjar%
 echo. ----------------------------------------------------------------- 
-echo.                   ·şÎñÆ÷ÒÑ¹Ø±Õ,°´ÈÎÒâ¼üÍË³ö                                
+echo.                   æœåŠ¡å™¨å·²å…³é—­,æŒ‰ä»»æ„é”®é€€å‡º                                
 echo. -----------------------------------------------------------------
 pause>nul
 :batexit
 exit
 :selectjava
-	echo =========Java°æ±¾Ñ¡Ôñ=========
-	echo 1¡¢Java8    2¡¢Java11    3¡¢Java16
-	echo 4¡¢Java17   5¡¢Java18
+	echo =========Javaç‰ˆæœ¬é€‰æ‹©=========
+	echo 1ã€Java8    2ã€Java11    3ã€Java16
+	echo 4ã€Java17   5ã€Java18
 	echo ==============================
-	echo "°²×°Ä¿Â¼ÎªC:\Program Files\Java\"
-	call :ColorText 07 "PS£º¿ÉÒÔĞŞ¸ÄµÚ37ĞĞ±äÁ¿Ö¸¶¨java°æ±¾Â·¾¶" && echo.
-	set /p selectjava="ÇëÊäÈëÑ¡Ïî£º"
+	echo "å®‰è£…ç›®å½•ä¸ºC:\Program Files\Java\"
+	call :ColorText 07 "PSï¼šå¯ä»¥ä¿®æ”¹ç¬¬37è¡Œå˜é‡æŒ‡å®šjavaç‰ˆæœ¬è·¯å¾„" && echo.
+	set /p selectjava="è¯·è¾“å…¥é€‰é¡¹ï¼š"
 	if %selectjava%==1 (
-		echo ======ÏÂÔØJava8¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½Java8â€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\java8.zip" (
-			echo Java8°²×°½Å±¾ÒÑÏÂÔØ¡£
+			echo Java8å®‰è£…è„šæœ¬å·²ä¸‹è½½ã€‚
 		) else (
-			bitsadmin /transfer Java8ÏÂÔØ /download http://java8.mxxz.work/java8.zip c:\java8.zip
+			bitsadmin /transfer Java8ä¸‹è½½ /download http://java8.mxxz.work/java8.zip c:\java8.zip
 			echo =============
-			if exist "c:\java8.zip" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\java8.zip" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)
-		echo ======ÏÂÔØunzip.exe¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½unzip.exeâ€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\unzip.exe" (
-			echo unzip.exeÒÑÏÂÔØ¡£
+			echo unzip.exeå·²ä¸‹è½½ã€‚
 		) else (
 			bitsadmin /transfer unzip /download http://file.mxxz.work/unzip.exe c:\unzip.exe
 			echo =============
-			if exist "c:\unzip.exe" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\unzip.exe" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)	
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°Java8
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…Java8
 		pause>nul
 		c:\unzip.exe -o c:\java8.zip
 		echo.
-		echo ÔÚµ¯³öµÄ½çÃæ°²×°java»·¾³£¬°²×°Íê±ÏºóÖØĞÂÔËĞĞ±¾½Å±¾
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°²¢ÅäÖÃjdk
+		echo åœ¨å¼¹å‡ºçš„ç•Œé¢å®‰è£…javaç¯å¢ƒï¼Œå®‰è£…å®Œæ¯•åé‡æ–°è¿è¡Œæœ¬è„šæœ¬
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…å¹¶é…ç½®jdk
 		pause>nul
-		java8»·¾³°²×°½Å±¾.bat
+		java8ç¯å¢ƒå®‰è£…è„šæœ¬.bat
 		goto batexit
 	) else if %selectjava%==2 (
-		echo ======ÏÂÔØJava11¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½Java11â€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\java11.zip" (
-			echo Java11°²×°½Å±¾ÒÑÏÂÔØ¡£
+			echo Java11å®‰è£…è„šæœ¬å·²ä¸‹è½½ã€‚
 		) else (
-			bitsadmin /transfer Java11ÏÂÔØ /download http://java11.mxxz.work/java11.zip c:\java11.zip
+			bitsadmin /transfer Java11ä¸‹è½½ /download http://java11.mxxz.work/java11.zip c:\java11.zip
 			echo =============
-			if exist "c:\java11.zip" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\java11.zip" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)
-		echo ======ÏÂÔØunzip.exe¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½unzip.exeâ€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\unzip.exe" (
-			echo unzip.exeÒÑÏÂÔØ¡£
+			echo unzip.exeå·²ä¸‹è½½ã€‚
 		) else (
 			bitsadmin /transfer unzip /download http://file.mxxz.work/unzip.exe c:\unzip.exe
 			echo =============
-			if exist "c:\unzip.exe" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\unzip.exe" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)	
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°Java11
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…Java11
 		pause>nul
 		c:\unzip.exe -o c:\java11.zip
 		echo.
-		echo ÔÚµ¯³öµÄ½çÃæ°²×°java»·¾³£¬°²×°Íê±ÏºóÖØĞÂÔËĞĞ±¾½Å±¾
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°²¢ÅäÖÃjdk
+		echo åœ¨å¼¹å‡ºçš„ç•Œé¢å®‰è£…javaç¯å¢ƒï¼Œå®‰è£…å®Œæ¯•åé‡æ–°è¿è¡Œæœ¬è„šæœ¬
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…å¹¶é…ç½®jdk
 		pause>nul
-		java11»·¾³°²×°½Å±¾.bat
+		java11ç¯å¢ƒå®‰è£…è„šæœ¬.bat
 		goto batexit
 	) else if %selectjava%==3 (
-		echo ======ÏÂÔØJava16¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½Java16â€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\java16.zip" (
-			echo Java16°²×°½Å±¾ÒÑÏÂÔØ¡£
+			echo Java16å®‰è£…è„šæœ¬å·²ä¸‹è½½ã€‚
 		) else (
-			bitsadmin /transfer Java16ÏÂÔØ /download http://java16.mxxz.work/java16.zip c:\java16.zip
+			bitsadmin /transfer Java16ä¸‹è½½ /download http://java16.mxxz.work/java16.zip c:\java16.zip
 			echo =============
-			if exist "c:\java16.zip" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\java16.zip" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)
-		echo ======ÏÂÔØunzip.exe¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½unzip.exeâ€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\unzip.exe" (
-			echo unzip.exeÒÑÏÂÔØ¡£
+			echo unzip.exeå·²ä¸‹è½½ã€‚
 		) else (
 			bitsadmin /transfer unzip /download http://file.mxxz.work/unzip.exe c:\unzip.exe
 			echo =============
-			if exist "c:\unzip.exe" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\unzip.exe" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)	
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°Java16
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…Java16
 		pause>nul
 		c:\unzip.exe -o c:\java16.zip
 		echo.
-		echo ÔÚµ¯³öµÄ½çÃæ°²×°java»·¾³£¬°²×°Íê±ÏºóÖØĞÂÔËĞĞ±¾½Å±¾
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°²¢ÅäÖÃjdk
+		echo åœ¨å¼¹å‡ºçš„ç•Œé¢å®‰è£…javaç¯å¢ƒï¼Œå®‰è£…å®Œæ¯•åé‡æ–°è¿è¡Œæœ¬è„šæœ¬
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…å¹¶é…ç½®jdk
 		pause>nul
-		java16»·¾³°²×°½Å±¾.bat
+		java16ç¯å¢ƒå®‰è£…è„šæœ¬.bat
 		goto batexit
 	) else if %selectjava%==4 (
-		echo ======ÏÂÔØJava17¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½Java17â€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\java17.zip" (
-			echo Java17°²×°½Å±¾ÒÑÏÂÔØ¡£
+			echo Java17å®‰è£…è„šæœ¬å·²ä¸‹è½½ã€‚
 		) else (
-			bitsadmin /transfer Java17ÏÂÔØ /download http://java17.mxxz.work/java17.zip c:\java17.zip
+			bitsadmin /transfer Java17ä¸‹è½½ /download http://java17.mxxz.work/java17.zip c:\java17.zip
 			echo =============
-			if exist "c:\java17.zip" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\java17.zip" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)
-		echo ======ÏÂÔØunzip.exe¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½unzip.exeâ€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\unzip.exe" (
-			echo unzip.exeÒÑÏÂÔØ¡£
+			echo unzip.exeå·²ä¸‹è½½ã€‚
 		) else (
 			bitsadmin /transfer unzip /download http://file.mxxz.work/unzip.exe c:\unzip.exe
 			echo =============
-			if exist "c:\unzip.exe" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\unzip.exe" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)	
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°Java17
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…Java17
 		pause>nul
 		c:\unzip.exe -o c:\java17.zip
 		echo.
-		echo ÔÚµ¯³öµÄ½çÃæ°²×°java»·¾³£¬°²×°Íê±ÏºóÖØĞÂÔËĞĞ±¾½Å±¾
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°²¢ÅäÖÃjdk
+		echo åœ¨å¼¹å‡ºçš„ç•Œé¢å®‰è£…javaç¯å¢ƒï¼Œå®‰è£…å®Œæ¯•åé‡æ–°è¿è¡Œæœ¬è„šæœ¬
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…å¹¶é…ç½®jdk
 		pause>nul
-		java17»·¾³°²×°½Å±¾.bat
+		java17ç¯å¢ƒå®‰è£…è„šæœ¬.bat
 		goto batexit
 	) else if %selectjava%==5 (
-		echo ======ÏÂÔØJava18¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½Java18â€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\java18.zip" (
-			echo Java18°²×°½Å±¾ÒÑÏÂÔØ¡£
+			echo Java18å®‰è£…è„šæœ¬å·²ä¸‹è½½ã€‚
 		) else (
-			bitsadmin /transfer Java18ÏÂÔØ /download http://java18.mxxz.work/java18.zip c:\java18.zip
+			bitsadmin /transfer Java18ä¸‹è½½ /download http://java18.mxxz.work/java18.zip c:\java18.zip
 			echo =============
-			if exist "c:\java18.zip" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\java18.zip" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)
-		echo ======ÏÂÔØunzip.exe¡ª¡ª5Ãëºó¿ªÊ¼ÏÂÔØ======
+		echo ======ä¸‹è½½unzip.exeâ€”â€”5ç§’åå¼€å§‹ä¸‹è½½======
 		ping 127.1 -n 6 >nul 2>nul
 		if exist "c:\unzip.exe" (
-			echo unzip.exeÒÑÏÂÔØ¡£
+			echo unzip.exeå·²ä¸‹è½½ã€‚
 		) else (
 			bitsadmin /transfer unzip /download http://file.mxxz.work/unzip.exe c:\unzip.exe
 			echo =============
-			if exist "c:\unzip.exe" (echo ÏÂÔØÍê³É) else (echo ÏÂÔØÊ§°Ü)
+			if exist "c:\unzip.exe" (echo ä¸‹è½½å®Œæˆ) else (echo ä¸‹è½½å¤±è´¥)
 		)	
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°Java18
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…Java18
 		pause>nul
 		c:\unzip.exe -o c:\java18.zip
 		echo.
-		echo ÔÚµ¯³öµÄ½çÃæ°²×°java»·¾³£¬°²×°Íê±ÏºóÖØĞÂÔËĞĞ±¾½Å±¾
-		echo °´ÈÎÒâ¼ü¼ÌĞø°²×°²¢ÅäÖÃjdk
+		echo åœ¨å¼¹å‡ºçš„ç•Œé¢å®‰è£…javaç¯å¢ƒï¼Œå®‰è£…å®Œæ¯•åé‡æ–°è¿è¡Œæœ¬è„šæœ¬
+		echo æŒ‰ä»»æ„é”®ç»§ç»­å®‰è£…å¹¶é…ç½®jdk
 		pause>nul
-		java18»·¾³°²×°½Å±¾.bat
+		java18ç¯å¢ƒå®‰è£…è„šæœ¬.bat
 		goto batexit	
 	) else (
-		echo ÊäÈë´íÎó£¬ÇëÖØĞÂÑ¡Ôñ
+		echo è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°é€‰æ‹©
 		echo.
 		goto selectjava
 	)
