@@ -4,6 +4,7 @@ import re
 import os
 from mcrcon import MCRcon
 
+
 logging.basicConfig(filename=r'log\server.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def load_settings(filename):
