@@ -8,6 +8,7 @@ from mcrcon import MCRcon
 logging.basicConfig(filename=r'log\server.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def load_settings(filename):
+    
     """Load server settings from a TOML file."""
     if not os.path.exists(filename):
         print(f"未找到配置文件 {filename}，正在生成...")
